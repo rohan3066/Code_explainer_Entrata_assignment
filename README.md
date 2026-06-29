@@ -10,6 +10,27 @@ Built using a React/Vite frontend, a Node.js/Express backend, and MongoDB, DeCod
 
 ## 🏗️ Architecture & System Flow
 
+![System Architecture](docs/images/system_architecture.png)
+
+### 🌟 How It Works (Simple Breakdown)
+
+Here is a step-by-step simple explanation of how DeCode AI processes your code from start to finish:
+
+1. **User Request**: You paste code, drag-and-drop a file, or enter a GitHub URL in the browser.
+2. **Frontend (React + Vite)**: The user interface captures your input and sends it to the backend server.
+3. **Backend (Node.js + Express)**: Acts as the gateway. If you provided a GitHub link, it calls the **GitHub REST API** to pull your repository files.
+4. **Middleware**: Validates your login session (JWT), prevents spam (Rate Limiter), and processes file uploads (Multer).
+5. **Language Detector**: Automatically figures out if your code is Python, JavaScript, C++, Go, etc.
+6. **Prompt Builder**: Formulates a detailed package containing your code and precise instructions for the AI.
+7. **Google Gemini API**: Examines your code to generate explanations, complexity reports, security reviews, and optimization recommendations.
+8. **Response Parser & Validator**: Cleans up the AI response to make sure it's structured correctly without any missing data.
+9. **MongoDB Database**: Saves the structured analysis so you can access it in the future.
+10. **Analysis Dashboard**: Renders the complete analysis with code differences (diffs), flowcharts, and a PDF download button.
+
+---
+
+### 💻 Technical Architecture Flow Chart
+
 ```mermaid
 graph TD
     subgraph Frontend [React v18 & Vite]
