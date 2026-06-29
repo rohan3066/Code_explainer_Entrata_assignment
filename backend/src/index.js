@@ -28,7 +28,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// Middleware
 const allowedOrigins = [
   process.env.CLIENT_URL || 'http://localhost:5173',
   'http://localhost:5174',
@@ -37,7 +36,14 @@ const allowedOrigins = [
 app.use(cors({
   origin: (origin, callback) => {
     // Allow requests with no origin (e.g. mobile apps, curl, Postman)
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (!origin) {
+      return callback(null, true);
+    }
+    
+    const isAllowed = allowedOrigins.includes(origin) || 
+      /^https:\/\/code-explainer-entrata-assignment(-\d+)?\.onrender\.com$/.test(origin);
+
+    if (isAllowed) {
       callback(null, true);
     } else {
       callback(new Error(`CORS policy: origin ${origin} not allowed`));
