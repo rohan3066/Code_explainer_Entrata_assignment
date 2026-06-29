@@ -1,5 +1,7 @@
 # DeCode AI — AI-Powered Code Explainer
 
+🚀 **Live Deployed App:** [https://code-explainer-entrata-assignment-1.onrender.com/](https://code-explainer-entrata-assignment-1.onrender.com/)
+
 DeCode AI is a full-stack, production-grade AI-powered code analysis and explanation platform. It allows developers to copy-paste code snippets, upload source code files directly, or import public and private GitHub repositories to generate multi-dimensional analyses. 
 
 Built using a React/Vite frontend, a Node.js/Express backend, and MongoDB, DeCode AI leverages the **Google Gemini API** (using the high-speed `gemini-2.5-flash` model) to extract structured, deep code insights, security vulnerabilities, Mermaid flowcharts, time and space complexity evaluations, and side-by-side refactoring/optimization diffs.
