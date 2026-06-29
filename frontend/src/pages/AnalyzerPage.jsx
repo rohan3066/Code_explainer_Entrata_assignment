@@ -8,6 +8,7 @@ import api from '../services/api';
 import Editor from '@monaco-editor/react';
 import { Code2, Upload, GitFork, ArrowRight, FileCode, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
+import LoadingOverlay from '../components/common/LoadingOverlay';
 
 export default function AnalyzerPage() {
   const { showToast } = useToast();
@@ -121,6 +122,7 @@ export default function AnalyzerPage() {
 
   return (
     <div className="p-8 space-y-6 max-w-6xl mx-auto w-full">
+      <LoadingOverlay isVisible={isAnalyzing} />
       <div>
         <h1 className="text-3xl font-black tracking-tight">AI Code Explainer</h1>
         <p className="text-sm font-semibold text-muted-foreground">Select an entry method and run intelligence scans</p>

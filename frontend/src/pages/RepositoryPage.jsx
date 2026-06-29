@@ -5,6 +5,7 @@ import { useToast } from '../context/ToastContext';
 import { LoadingSkeleton } from '../components/common/LoadingSkeleton';
 import { GitBranch, ExternalLink, Code2, FileText, Globe, FolderOpen, Cpu } from 'lucide-react';
 import { motion } from 'framer-motion';
+import LoadingOverlay from '../components/common/LoadingOverlay';
 
 // Simple recursive directory tree component
 function FileTree({ nodes, onFileClick, depth = 0 }) {
@@ -105,6 +106,7 @@ function RepositoryDetailPage({ repoId }) {
 
   return (
     <div className="p-8 space-y-6 max-w-5xl mx-auto w-full">
+      <LoadingOverlay isVisible={explaining} />
       <div className="flex items-center gap-4">
         <Link to="/repositories" className="p-2 border rounded-xl hover:bg-muted transition text-sm font-bold text-muted-foreground">
           ← Back

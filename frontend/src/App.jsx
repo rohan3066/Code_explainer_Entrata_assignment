@@ -17,6 +17,7 @@ import HistoryPage from './pages/HistoryPage';
 import FavoritesPage from './pages/FavoritesPage';
 import RepositoryPage from './pages/RepositoryPage';
 import SettingsPage from './pages/SettingsPage';
+import LoadingSpinner from './components/common/LoadingSpinner';
 
 // Layout wrapper for authenticated pages (with sidebar)
 function AppLayout() {
@@ -50,14 +51,7 @@ function ProtectedRoute() {
   const { user, loading } = useAuth();
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="space-y-2 text-center">
-          <div className="h-8 w-8 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto" />
-          <p className="text-sm font-semibold text-muted-foreground">Loading...</p>
-        </div>
-      </div>
-    );
+    return <LoadingSpinner message="Checking account authentication..." />;
   }
 
   if (!user) {
@@ -72,11 +66,7 @@ function GuestRoute({ children }) {
   const { user, loading } = useAuth();
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="h-8 w-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
+    return <LoadingSpinner message="Verifying session status..." />;
   }
 
   if (user) {
